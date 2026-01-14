@@ -1,5 +1,16 @@
 {
     "name": "Mush-VPS",
-    "build": { "dockerfile": "Dockerfile" },
-    "postStartCommand": "sudo tailscaled > /dev/null 2>&1 & sleep 2 && sudo tailscale up --authkey=TS_KEY_ANDA"
+    "features": {
+        "ghcr.io/tailscale/codespace/tailscale": {
+            "version": "latest"
+        }
+    },
+    "customizations": {
+        "codespaces": {
+            "secrets": [
+                "TS_AUTH_KEY"
+            ]
+        }
+    },
+    "postCreateCommand": "sudo tailscale up --authkey=${TS_AUTH_KEY}"
 }
