@@ -1,0 +1,9 @@
+{
+    "name": "Mush-VPS-Static",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:1": {}
+    },
+    "postCreateCommand": "curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscaled & sleep 5 && sudo tailscale up --authkey=TS_KEY_KAMU"
+}
+
