@@ -12,5 +12,6 @@
             ]
         }
     },
-    "postCreateCommand": "sudo tailscale up --authkey=${TS_AUTH_KEY}"
+    "postStartCommand": "sudo tailscaled > /dev/null 2>&1 & sleep 2 && sudo tailscale up --authkey=${TS_AUTH_KEY}"
+    
 }
