@@ -1,17 +1,9 @@
 {
-    "name": "Mush-VPS",
-    "features": {
-        "ghcr.io/tailscale/codespace/tailscale": {
-            "version": "latest"
-        }
-    },
-    "customizations": {
-        "codespaces": {
-            "secrets": [
-                "TS_AUTH_KEY"
-            ]
-        }
-    },
-    "postStartCommand": "sudo tailscaled > /dev/null 2>&1 & sleep 2 && sudo tailscale up --authkey=${TS_AUTH_KEY}"
-    
+	"image": "mcr.microsoft.com/devcontainers/universal:latest",
+	"features": {
+		"ghcr.io/devcontainers/features/sshd:1": {
+			"version": "latest"
+		}
+	},
+	"postStartCommand": "sudo tailscaled > /dev/null 2>&1 & sleep 2 && sudo tailscale up --authkey=${TS_AUTH_KEY} && sudo service ssh start"
 }
